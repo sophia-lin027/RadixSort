@@ -1,13 +1,21 @@
-public class Radix {
+import java.lang.Math;
+
+public class Radix{
   public static void main (String[] args) {
-    System.out.println(length(0));
-    System.out.println(length(15));
-    System.out.println(length(-10));
-    System.out.println(length(5112));
+    System.out.println(nth(123, 1));
+    System.out.println(nth(-123, 1));
+    System.out.println(nth(123, 2));
+    System.out.println(nth(-123, 2));
+
+    // System.out.println(length(0));
+    // System.out.println(length(15));
+    // System.out.println(length(-10));
+    // System.out.println(length(5112));
   }
 
   public static int nth (int n, int col) {
-    return 0;
+    n = Math.abs(n);
+    return (int) (n % (Math.pow(10, col + 1)) / Math.pow(10, col));
   }
 
   public static int length (int n) {
