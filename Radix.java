@@ -1,11 +1,11 @@
 import java.lang.Math;
 
-public class Radix{
+public class Radix extends SortableLinkedList{
   public static void main (String[] args) {
-    System.out.println(nth(123, 1));
-    System.out.println(nth(-123, 1));
-    System.out.println(nth(123, 2));
-    System.out.println(nth(-123, 2));
+    // System.out.println(nth(123, 1));
+    // System.out.println(nth(-123, 1));
+    // System.out.println(nth(123, 2));
+    // System.out.println(nth(-123, 2));
 
     // System.out.println(length(0));
     // System.out.println(length(15));
@@ -25,6 +25,14 @@ public class Radix{
     }
     else {
       return (int) Math.log10(n) + 1;
+    }
+  }
+
+  public static void merge(SortableLinkedList original, SortableLinkedList[] buckets) {
+    for (int i = 0; i < buckets.length; i++) {
+      if (buckets[i] != null) {
+        original.extend(buckets[i]);
+      }
     }
   }
 }
