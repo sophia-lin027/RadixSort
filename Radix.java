@@ -70,11 +70,7 @@ public class Radix extends SortableLinkedList{
     radixSortSimple(positive_values);
     radixSortSimple(negative_values);
 
-    // for (int i = data.size() - 1; i >= 0; i--) {
-    //   data.remove(i);
-    // }
-
-    for (int i = negative_values.size() - 1; i >= 0; i--) {
+    for (int i = 0; i < negative_values.size(); i = 0) {
       data.add(0, negative_values.remove(0));
     }
 
