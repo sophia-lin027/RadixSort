@@ -58,7 +58,7 @@ public class Radix extends SortableLinkedList{
     SortableLinkedList positive_values = new SortableLinkedList();
     SortableLinkedList negative_values = new SortableLinkedList();
 
-    for (int i = 0; i < data.size(); i = 0) {
+    while (data.size() > 0) {
       if (data.get(0) >= 0) {
         positive_values.add(data.remove(0));
       }
@@ -70,7 +70,7 @@ public class Radix extends SortableLinkedList{
     radixSortSimple(positive_values);
     radixSortSimple(negative_values);
 
-    for (int i = 0; i < negative_values.size(); i = 0) {
+    while (negative_values.size() > 0) {
       data.add(0, negative_values.remove(0));
     }
 
