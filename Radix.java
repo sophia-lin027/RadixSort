@@ -90,7 +90,7 @@ public class Radix extends SortableLinkedList{
         positive_values.add(data.get(i));
       }
       else {
-        negative_values.add(data.get(i));
+        negative_values.add(data.get(i) * -1);
       }
     }
 
@@ -102,8 +102,8 @@ public class Radix extends SortableLinkedList{
       data.remove(i);
     }
 
-    for (int i = 0; i < negative_values.size(); i++) {
-      data.add(negative_values.get(i));
+    for (int i = negative_values.size() - 1; i >= 0; i--) {
+      data.add(negative_values.get(i) * -1);
     }
 
     data.extend(positive_values);
