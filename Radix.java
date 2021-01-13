@@ -48,11 +48,10 @@ public class Radix extends SortableLinkedList{
         if (length(data.get(0)) > largest) {
           largest = length(data.get(0));
         }
-        bucket(nth(data.get(0), i)).add(data.remove(0));
+        (bucket[Math.abs(nth(data.get(0), i))]).add(data.remove(0));
       }
+      merge(data, bucket);
     }
-
-    merge(data, bucket);
   }
 
   public static void radixSort(SortableLinkedList data) {
