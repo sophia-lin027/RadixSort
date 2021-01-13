@@ -80,4 +80,32 @@ public class Radix extends SortableLinkedList{
       data.extend(temporary);
     }
   }
+
+  public static void radixSort(SortableLinkedList data) {
+    SortableLinkedList positive_values = new SortableLinkedList();
+    SortableLinkedList negative_values = new SortableLinkedList();
+
+    for (int i = 0; i < data.size(); i++) {
+      if (data.get(i) >= 0) {
+        positive_values.add(data.get(i));
+      }
+      else {
+        negative_values.add(data.get(i));
+      }
+    }
+
+    radixSortSimple(positive_values);
+    radixSortSimple(negative_values);
+    SortableLinkedList temporary = new SortableLinkedList();
+
+    for (int i = data.size() - 1; i>= 0; i--) {
+      data.remove(i);
+    }
+
+    for (int i = 0; i < negative_values.size(); i++) {
+      data.add(negative_values.get(i));
+    }
+
+    data.extend(positive_values);
+  }
 }
