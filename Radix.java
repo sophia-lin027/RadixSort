@@ -35,4 +35,49 @@ public class Radix extends SortableLinkedList{
       }
     }
   }
+
+  public static void radixSortSimple(SortableLinkedList data) {
+    int largest = 0;
+    for (int i = 0; i < data.size(); i++) {
+      if (data.get(i) > largest) {
+        largest = data.get(i);
+      }
+    }
+    int passes = length(largest);
+
+    for (int i = 0; i < passes; i++) {
+      SortableLinkedList zero = new SortableLinkedList();
+      SortableLinkedList one = new SortableLinkedList();
+      SortableLinkedList two = new SortableLinkedList();
+      SortableLinkedList three = new SortableLinkedList();
+      SortableLinkedList four = new SortableLinkedList();
+      SortableLinkedList five = new SortableLinkedList();
+      SortableLinkedList six = new SortableLinkedList();
+      SortableLinkedList seven = new SortableLinkedList();
+      SortableLinkedList eight = new SortableLinkedList();
+      SortableLinkedList nine = new SortableLinkedList();
+      for (int j = 0; j < data.size(); j++) {
+        int digit = nth(data.get(j), i);
+        if (digit == 0) zero.add(data.get(j));
+        else if (digit == 1) one.add(data.get(j));
+        else if (digit == 2) two.add(data.get(j));
+        else if (digit == 3) three.add(data.get(j));
+        else if (digit == 4) four.add(data.get(j));
+        else if (digit == 5) five.add(data.get(j));
+        else if (digit == 6) six.add(data.get(j));
+        else if (digit == 7) seven.add(data.get(j));
+        else if (digit == 8) eight.add(data.get(j));
+        else if (digit == 9) nine.add(data.get(j));
+      }
+
+      SortableLinkedList temporary = new SortableLinkedList();
+      SortableLinkedList[] bucket = new SortableLinkedList[] {zero, one, two, three, four, five, six, seven, eight, nine};
+      merge(temporary, bucket);
+
+      for (int j = data.size() - 1; j>= 0; j--) {
+        data.remove(j);
+      }
+      data.extend(temporary);
+    }
+  }
 }
