@@ -42,13 +42,16 @@ public class Radix extends SortableLinkedList{
       bucket[i] = new SortableLinkedList();
     }
 
-    int largest = 0;
+    int largest = 1;
     for (int i = 0; i <= largest; i++) {
-      while (data.size() >  0) {
+      while (data.size() > 0) {
         if (length(data.get(0)) > largest) {
           largest = length(data.get(0));
         }
-        (bucket[Math.abs(nth(data.get(0), i))]).add(data.remove(0));
+        int value = data.get(0);
+        int digit = nth(value, i);
+        bucket[digit].add(value);
+        data.remove(0);
       }
       merge(data, bucket);
     }
